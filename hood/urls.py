@@ -19,5 +19,7 @@ from django.contrib import admin
 from neigbor_hood import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^',include('neigbor_hood.urls'))
+    url(r'^',include('neigbor_hood.urls')),
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
+    url(r'^accounts/profile/$', views.home,name='home'),
 ]
