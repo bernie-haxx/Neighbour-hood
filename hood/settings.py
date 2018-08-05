@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'friendship',
     'bootstrap4',
     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.instagram',
 ]
 
 MIDDLEWARE = [
