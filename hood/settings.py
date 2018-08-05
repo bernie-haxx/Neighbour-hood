@@ -77,6 +77,14 @@ WSGI_APPLICATION = 'hood.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
+   	'default': {
+       'ENGINE': 'django.contrib.gis.db.backends.postgis',
+       'NAME': 'hood',
+       'USER': 'ben',
+       'PASSWORD': 'ben',
+       'HOST': 'localhost',
+       'PORT': '',
+   }
 
 }
 
