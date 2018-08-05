@@ -1,0 +1,52 @@
+{%extends "registration/base.html"%} 
+{% load bootstrap4 %}
+
+{% block content %}
+
+<div class="container-fluid" style='background-color:#FAFAFA;'>
+	<!-- empty div -->
+	<div class='row'>
+		<div class='col-md-2 col-xs-2 col-sm-2'>
+		</div>
+		<div class='col-md-4 col-xs-4 col-sm-4 phone'>
+			<div class='content'></div>
+        </div>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+        <div class="panel-body card register-card">
+        	<h2 class='header'>Sign Up<h2>
+          <form  action="/accounts/register/" method="post">
+            	{%csrf_token%}
+            	{% for field in form %}
+            	<div class='fieldWrapper'>
+            		<h5 style='text-align:center;font-family"Roboto", sans-serif;font-size:14px;'>{{field.label}}</h5>
+
+            		<p style='width:100%;text-align:center;'>{{field}}</p>
+            		</div>
+       			 {% for error in field.errors %}
+         		 <p style="color: red">{{ error }}</p>
+        			{% endfor %}
+            	{% endfor %}
+            	
+              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up" style='text-align:center;font-family"Roboto", sans-serif;font-size:14px;width:100%;margin-top:20px;'>
+              
+            </form>
+
+            
+             
+		</div>
+		<div class='card login-card'>
+			<h1 style='text-align:center;font-family"Roboto", sans-serif;font-size:14px;width:100%;margin-top:20px;'>
+				If you have an account: </h1>
+			<a href='/accounts/login' style='text-align:center;font-family"Roboto", sans-serif;font-size:14px;width:100%;margin-top:20px;'>Sign In</a>
+            <input type="hidden" name="next" value="{{next}}">
+		</div>
+		
+	</div>
+		<div class='col-md-2 col-xs-2 col-sm-2'>
+		</div>
+		</div>
+
+   		
+   		
+    </div>
+{%endblock%}
