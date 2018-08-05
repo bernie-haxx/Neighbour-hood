@@ -9,8 +9,12 @@ dj-static==0.0.6
 Django==1.11
 django-allauth==0.36.0
 django-bootstrap4==0.0.6
+django-floppyforms==1.7.0
 django-friendship==1.8.0
+django-geojson==2.11.0
+django-geoposition==0.3.0
 django-heroku==0.3.1
+-e git+https://github.com/makinacorpus/django-leaflet.git@d10a1d12c14468f6adea385fc2dba359ca75f055#egg=django_leaflet
 django-registration==2.4.1
 django-tinymce==2.7.0
 django-toolbelt==0.0.1
@@ -22,11 +26,13 @@ ipdb==0.11
 ipython==6.5.0
 ipython-genutils==0.2.0
 jedi==0.12.1
+jsonfield==2.0.2
 oauthlib==2.1.0
 parso==0.3.1
 pexpect==4.6.0
 pickleshare==0.7.4
 Pillow==5.2.0
+pkg-resources==0.0.0
 postgis==1.0.4
 prompt-toolkit==1.0.15
 psycopg2==2.7.5
