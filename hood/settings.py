@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'friendship',
     'bootstrap4',
+    'allauth',
 ]
 
 MIDDLEWARE = [
