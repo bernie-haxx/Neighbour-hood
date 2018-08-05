@@ -9,7 +9,9 @@ from jsonfield import JSONField
 
 class Neighbor_hood(models.Model):
 	name=models.CharField(max_length=100, null=True, blank=True)
-	location=modelss.PointField()
+	location=PointField()
+	json = JSONField(default={"type":"Point","coordinates":[-1.4058208465576172,47.15301133231325]})
+
 	def __str__(self):
 		return self.name
 	class Meta:
