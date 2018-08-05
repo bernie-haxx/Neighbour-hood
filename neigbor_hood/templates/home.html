@@ -1,3 +1,11 @@
+{% load leaflet_tags %}
+{% block content %}
+<head>
+    {% leaflet_js %}
+    {% leaflet_css %}
+</head>
 <link rel="shortcut icon" href="http://localhost/" />
-
+<a href="{% url 'new_profile'%}">New Profile</a>
 <h1>dONE THIS SHIII</h1>
+{% leaflet_map "yourmap" %}
+{%endblock%}
