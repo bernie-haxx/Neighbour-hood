@@ -4,5 +4,5 @@ from leaflet.admin import LeafletGeoAdmin
 from leaflet.admin import LeafletGeoAdminMixin
 # Register your models here.
 admin.site.register(UserProfile)
-admin.site.register(Neighbor_hood)
+admin.site.register(Neighbor_hood, LeafletGeoAdmin)
 admin.site.register(Business)
