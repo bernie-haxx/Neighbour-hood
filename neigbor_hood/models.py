@@ -46,3 +46,29 @@ class UserProfile(models.Model):
 	@receiver(post_save, sender=User)
 	def save_user_profile(sender, instance, **kwargs):
 		instance.profile.save()
+
+class Business(models.Model):
+	name=models.CharField(max_length=100, null=True, blank=True)
+	user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="business",null=True,blank=True)
+	neighbor_hood=models.ForeignKey(Neighbor_hood, on_delete=models.CASCADE,related_name="hoodbus",null=True,blank=True)
+	email = models.CharField(max_length=100, null=True, blank=True)
+
+	def __str__(self):
+		return self.name
+	class Meta:
+		ordering = ['name']	
+
+	def save_business(self):
+		self.save()	
+	def delete_business(self):
+		self.delete()		
+
+	@classmethod
+	def find_business(cls,business_id):
+		business=cls.objects.filter(id=business_id)
+		return business			
+
+	@classmethod
+	def search_by_title(cls,search_term):
+		business = cls.objects.filter(title__icontains=search_term)
+		return business		
