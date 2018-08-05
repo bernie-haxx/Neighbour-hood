@@ -1,9 +1,10 @@
-from django.db import models
+from django.contrib.gis.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from tinymce.models import HTMLField
-from django.contrib.gis.db import models as modelss
+from djgeojson.fields import PointField
+from jsonfield import JSONField
 # Create your models here.
 
 class Neighbor_hood(models.Model):
