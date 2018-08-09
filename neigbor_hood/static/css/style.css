@@ -1,0 +1,257 @@
+.align{
+	text-align:center;
+	margin-left:120px;
+}
+.aligner{
+	text-align:center;
+}
+.forms{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+}
+.going{
+	margin-top:100px;
+}
+.widther{
+	width:100%;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+.register-card,.login-card{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.post-cards{
+	margin-top:40px;
+}
+.tittle{
+	margin-right:50px;
+}
+.tittles{
+	margin-right:0px;
+}
+.jeff{
+	margin-right:150px;
+}
+.form-rounded{
+border-radius: 50px;
+
+}
+.trans{
+	line-height:50px;
+
+}
+
+.title, .home-button{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+	font-size:20px;
+	
+	transition:all 0.5s ease;
+	color:black;
+	
+
+}
+
+.title{
+	float:left;
+}
+a.title:hover,a.home-button:hover{
+	text-decoration:none !important;
+	font-size:21px;
+	transition:all 0.5s ease;
+	color:black;
+}
+h1 {
+	margin:0;
+}
+.right{
+	float:right;
+	right:0px;
+}
+.padder{
+	padding-left:40px;
+	padding-right:40px;
+}
+ul {
+  list-style-type: none;
+}
+.beginner-page{
+	background-image:url("http://getwallpapers.com/wallpaper/full/1/2/8/532452.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-attachment:fixed;
+	width:100%;
+	height:640px;
+	color:white;
+	position:absolute;
+	display:inline-block;
+	transition: all 0.6s ease;
+
+}
+#beginner-page{
+	position:relative;
+	background: rgba(255,255,255,0.3);
+	background-blend-mode: screen;
+	transition: background 2s;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-size:cover;
+	width:relative;
+	height:640px;
+}
+#beginner-page:hover{
+	background:rgba(0,0,0,0.5);
+	transition: background 2s;
+	color:white;
+}
+#beginner-page h1{
+	display:none;
+	transition: all ease 2s;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+}
+.hood{
+	padding:0px;text-align:center;width:50px;font-family: "Roboto Condense",sans-serif;font-family: "Julius Sans One", sans-serif;
+}
+#beginner-page:hover h1{
+	padding-top:100px;
+	line-height:200px;
+	text-align:center;
+	display:block;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+	transition: all ease 2s;
+	margin-right:20px;
+}
+
+#beginner-page h5{
+	display:none;
+	transition: text 2s;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+}
+#beginner-page:hover h5{
+	padding-top:10px;
+	text-align:center;
+	display:block;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+	transition: text 10s;
+	margin-right:20px;
+}
+
+
+#beginner-page:hover a{
+	display:block;
+	font-size:30px;
+	transition:all 20s ease;
+	color:white;
+}
+.beginning-page{
+	background-image:url("http://ongur.com/wp-content/uploads/2014/04/New-York-View-in-Black-and-White-Skyline.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-attachment:fixed;
+	width:100%;
+	height:640px;
+	color:white;
+	position:absolute;
+	display:inline-block;
+	transition: all 0.6s ease;
+
+}
+#beginning-page{
+	position:relative;
+	background: rgba(255,255,255,0.3);
+	background-blend-mode: screen;
+	transition: background 2s;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-size:cover;
+	width:relative;
+	height:640px;
+}
+#beginning-page:hover{
+	background:rgba(0,0,0,0.5);
+	transition: background 2s;
+	color:white;
+}
+#beginning-page h1{
+	display:none;
+	transition: all ease 2s;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+}
+.hood{
+	padding:0px;text-align:center;width:50px;font-family: "Roboto Condense",sans-serif;font-family: "Julius Sans One", sans-serif;
+}
+#beginning-page:hover h1{
+	padding-top:100px;
+	line-height:200px;
+	text-align:center;
+	display:block;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+	transition: all ease 2s;
+	margin-right:20px;
+}
+
+#beginning-page h5{
+	display:none;
+	transition: text 2s;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+}
+#beginning-page:hover h5{
+	padding-top:10px;
+	text-align:center;
+	display:block;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+	transition: text 10s;
+	margin-right:20px;
+}
+
+
+#beginning-page:hover a{
+	display:block;
+	font-size:30px;
+	transition:all 20s ease;
+	color:white;
+}
+.neigbor{
+	line-height:400px;
+	color:white;
+	text-align:center;
+}
+.fform{
+	margin-top:100px;
+	text-align:center;
+	margin-right:150px;
+	float:right;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+	line-height:400px;
+	width:80%;
+}
+.render{
+	text-align:center;
+	line-height:100px;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
+	margin-top:150px;
+	margin-left:150px;
+}
+.house{
+	background:url("https://img.freepik.com/free-icon/home_318-116706.jpg?size=338c&ext=jpg");
+	background-size:contain;
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	width:200px;
+	font-size:200px;
+	height:200px;
+}
