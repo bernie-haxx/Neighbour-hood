@@ -1,0 +1,129 @@
+sudo: required
+language: python
+
+python:
+  - 2.7
+  - 3.5
+  - 3.6
+
+addons:
+  postgresql: 9.6
+  apt:
+    packages:
+    - postgresql-9.6-postgis-2.3
+
+env:
+  matrix:
+  - DJANGO_VERSION=1.6.11 DATABASE=postgres
+  - DJANGO_VERSION=1.6.11 DATABASE=sqlite
+  - DJANGO_VERSION=1.7.11 DATABASE=postgres
+  - DJANGO_VERSION=1.7.11 DATABASE=sqlite
+  - DJANGO_VERSION=1.8.18 DATABASE=postgres
+  - DJANGO_VERSION=1.8.18 DATABASE=sqlite
+  - DJANGO_VERSION=1.9.13 DATABASE=postgres
+  - DJANGO_VERSION=1.9.13 DATABASE=sqlite
+  - DJANGO_VERSION=1.10.8 DATABASE=postgres
+  - DJANGO_VERSION=1.10.8 DATABASE=sqlite
+  - DJANGO_VERSION=1.11.7 DATABASE=postgres
+  - DJANGO_VERSION=1.11.7 DATABASE=sqlite
+  - DJANGO_VERSION=dev DATABASE=postgres
+  - DJANGO_VERSION=dev DATABASE=sqlite
+
+matrix:
+  exclude:
+    - python: 3.5
+      env: DJANGO_VERSION=1.6.11 DATABASE=sqlite
+    - python: 3.5
+      env: DJANGO_VERSION=1.6.11 DATABASE=postgres
+    - python: 3.5
+      env: DJANGO_VERSION=1.7.11 DATABASE=sqlite
+    - python: 3.5
+      env: DJANGO_VERSION=1.7.11 DATABASE=postgres
+    - python: 3.5
+      env: DJANGO_VERSION=1.8.18 DATABASE=sqlite
+    - python: 3.5
+      env: DJANGO_VERSION=1.9.13 DATABASE=sqlite
+    - python: 3.5
+      env: DJANGO_VERSION=1.10.8 DATABASE=sqlite
+    - python: 3.5
+      env: DJANGO_VERSION=1.11.7 DATABASE=sqlite
+    - python: 3.5
+      env: DJANGO_VERSION=dev DATABASE=sqlite
+    - python: 3.6
+      env: DJANGO_VERSION=1.6.11 DATABASE=sqlite
+    - python: 3.6
+      env: DJANGO_VERSION=1.6.11 DATABASE=postgres
+    - python: 3.6
+      env: DJANGO_VERSION=1.7.11 DATABASE=sqlite
+    - python: 3.6
+      env: DJANGO_VERSION=1.7.11 DATABASE=postgres
+    - python: 3.6
+      env: DJANGO_VERSION=1.8.18 DATABASE=sqlite
+    - python: 3.6
+      env: DJANGO_VERSION=1.8.18 DATABASE=postgres
+    - python: 3.6
+      env: DJANGO_VERSION=1.9.13 DATABASE=sqlite
+    - python: 3.6
+      env: DJANGO_VERSION=1.9.13 DATABASE=postgres
+    - python: 3.6
+      env: DJANGO_VERSION=1.10.8 DATABASE=sqlite
+    - python: 3.6
+      env: DJANGO_VERSION=1.10.8 DATABASE=postgres
+    - python: 3.6
+      env: DJANGO_VERSION=1.11.7 DATABASE=sqlite
+    - python: 2.7
+      env: DJANGO_VERSION=dev DATABASE=sqlite
+    - python: 2.7
+      env: DJANGO_VERSION=dev DATABASE=postgres
+
+  allow_failures:
+    - python: 3.5
+      env: DJANGO_VERSION=dev DATABASE=sqlite
+    - python: 3.5
+      env: DJANGO_VERSION=dev DATABASE=postgres
+    - python: 3.6
+      env: DJANGO_VERSION=dev DATABASE=sqlite
+    - python: 3.6
+      env: DJANGO_VERSION=dev DATABASE=postgres
+
+before_install:
+  - sudo apt-get update
+
+install:
+ # GeoDjango dependencies
+ - sudo apt-get update -qq
+ - sudo apt-get install -y libproj-dev libgeos-dev
+
+ - if [[ $DATABASE == sqlite ]]; then sudo apt-get install -y libspatialite-dev; fi
+ - if [[ $DATABASE == sqlite ]]; then pip install pysqlite==2.8.2; fi
+ - if [[ $DATABASE == postgres ]]; then pip install psycopg2; fi
+
+   # This is a dependency of our Django test script
+ - pip install argparse
+ - if [[ $DJANGO_VERSION == dev ]]; then pip
+   install https://github.com/django/django/tarball/master/django.tar.gz#egg=django; else pip
+   install -q Django==$DJANGO_VERSION; fi
+
+ - pip install coverage
+ - pip install flake8
+
+ - python setup.py develop
+ - npm install leaflet/tests/
+
+ - pip freeze
+ - dpkg -l
+
+before_script:
+ - flake8 --ignore=E501 leaflet
+ - if [[ $DATABASE == postgres ]]; then psql -c 'create database test_db;' -U postgres; fi
+ - if [[ $DATABASE == postgres ]]; then psql -c 'CREATE EXTENSION postgis;' -U postgres -d test_db; fi
+
+script:
+ - python quicktest.py leaflet --db=$DATABASE
+ - node --version
+ - node node_modules/mocha-phantomjs/bin/mocha-phantomjs leaflet/tests/index.html
+
+after_success:
+ - coverage run quicktest.py leaflet --db=$DATABASE
+ - pip install coveralls
+ - coveralls
