@@ -1,8 +1,10 @@
 {%extends 'registration/base.html'%}
 {% load bootstrap4 %}
 {% block content %}
-<div class="container-fluid" style='background-color:#FAFAFA;'>
-  <div class="row">
+
+<body style="background:rgba(0,0,0,0.5);>
+<div class="container-fluid">
+  <div class="row going">
     <!-- Empty div -->
     <div class="col-md-4"></div>
     <div class="col-md-4">
@@ -10,35 +12,38 @@
         <p> Password or Username is incorrect </p>
       {% endif %}
    <div class="panel-body card register-card">
-        	<h2 class='header'>Sign In<h2>
+        	<h1 class='header forms aligner ' style="padding-bottom:40px;"><strong>Sign In</strong></h1>
         	<form  action="/accounts/login/" method="post">
             	{%csrf_token%}
             	{% for field in form %}
-            	<div class='fieldWrapper'>
-            		<h5 style='text-align:center;font-family"Roboto", sans-serif;font-size:14px;'>{{field.label}}</h5>
-
-            		<p style='width:100%;text-align:center;'>{{field}}</p>
-            		</div>
+            	<div class='forms aligner'>
+            		<h5 style=''>{{field.label}}</h5>
+            		{{field}}
+            		</div><br>
        			 {% for error in field.errors %}
-         		 <p style="color: red">{{ error }}</p>
+         		 <p class="forms aligner">{{ error }}</p>
         			{% endfor %}
             	{% endfor %}
             	{% if user.is_authenticated%}
               <input type='hidden' name='next' value='/'>
               {%endif%}
               
-              <input type="submit" class="btn btn-primary btn-sm"  value='Login ' style='text-align:center;font-family"Roboto", sans-serif;font-size:14px;width:100%;margin-top:20px;'>
+              <input type="submit" class="btn btn-primary btn-sm form-rounded forms aligner widther" value='Login'>
 
             </form>
- <a href='/accounts/register/'>Sign up</a>
+ <div class='card login-card'>
+			<h5 class="forms aligner">
+				If you dont have an account: </h5>
+			<a href='/accounts/register' class="forms aligner"'>Sign Up</a>
+		</div>
            
              
 		</div>
 		</div>
+		<div class="col-md-4"></div>
 	</div>
     </div>
     <!-- empty div -->
-    <div class="col-md-4"></div>
-  </div>
-</div>
+    </body>
+
 {% endblock %}

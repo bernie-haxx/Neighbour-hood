@@ -1,29 +1,42 @@
-{% load bootstrap4 %} {% load staticfiles %} {% load leaflet_tags %}
-<!DOCTYPE html>
+{% load bootstrap4 %} {% load static %}
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- {% leaflet_js plugins="forms" %}
-   {% leaflet_css plugins="forms" %}
-  <title>New Profile</title>
-  {{form.media}}
 
+  <title>New Profile</title>
+  
+<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto+Condensed" rel="stylesheet">
 {% block styles %} {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/news.css' %}"> {% endblock %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endblock %}
 
 </head>
 
 <body>
-<h1>Edit {{ object }}</h1>
-  <form  action="{%url 'new_profile'%}" method="post" enctype="multipart/form-data">
-    {%csrf_token%}
+	<div class="container-fluid">
+		<div class="row">
+			<div class='col-md-4 col-xs-4 col-sm-4'></div>
+<div class='col-md-4 col-xs-4 col-sm-4'><h1 class="forms aligner">Editing You're Profile</h1>  <form  action="{% url 'new_profile' %}" method="post">
+            	{%csrf_token%}
+            	{% for field in form %}
+            	<div class='fieldWrapper forms'>
+            		<h5 class="forms aligner">{{field.label}}</h5>
 
-    {% bootstrap_form form %}
-    <input type="submit" class="btn btn-success btn-lg" value="Post">
-  </form>
+            		<p style='width:100%;text-align:center;'>{{field}}</p>
+            		</div>
+       			 {% for error in field.errors %}
+         		 <p style="color: red">{{ error }}</p>
+        			{% endfor %}
+            	{% endfor %}
+            	
+              <input type="submit" class="btn btn-primary btn-sm form-rounded widther forms" value="Save changes" >
+              
+            </form></div>
+<div class='col-md-4 col-xs-4 col-sm-4'></div>
 
+</div>
+</div>
    {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}

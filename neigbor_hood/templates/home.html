@@ -1,11 +1,19 @@
-{% load leaflet_tags %}
+{% extends 'base.html' %}
 {% block content %}
-<head>
-    {% leaflet_js %}
-    {% leaflet_css %}
-</head>
-<link rel="shortcut icon" href="http://localhost/" />
-<a href="{% url 'new_profile'%}">New Profile</a>
-<h1>dONE THIS SHIII</h1>
-{% leaflet_map "yourmap" %}
+{% for neighbor in neighbor_hood %}
+{% if user.profile.neighbor_hood == neighbor  %}
+<div class='beginning-page'>
+	<div id='beginning-page'><h1>Welcome to Your Hood {{user.profile.neighbor_hood.name}} !</h1>
+		<h5><a href='/new_business'>Add a Business in {{user.profile.neighbor_hood.name}} </a> <a>|</a> <a href='{% url "hood" %}'>Find you're Fellow Neighbours</a> <a>|</a> <a href='{% url "hood_business"%}'>Find Businesses</a><a>|</a> <a href='{% url "new_post"%}'>Wanna Notify youre Neighbours?</a> </h5> </div>
+</div>
+
+{% else %}
+
+<div class='beginner-page'>
+	<div id='beginner-page'><h1>Sorry We've registered that you're currently not in a hood!</h1>
+		<h5><a href='/new_neigbor_hood'>Add a Hood</a> <a>|</a> <a href='{% url "neigbor_hood" %}'>Find your Hood</a> </h5> </div>
+</div>
+{% endif %}
+{% endfor %}
+
 {%endblock%}
