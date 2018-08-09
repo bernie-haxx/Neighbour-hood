@@ -1,16 +1,18 @@
-from django.contrib.gis.db import models
+from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from tinymce.models import HTMLField
 from djgeojson.fields import PointField
 from jsonfield import JSONField
+
 # Create your models here.
 
 class Neighbor_hood(models.Model):
 	name=models.CharField(max_length=100, null=True, blank=True)
-	location=PointField()
-	json = JSONField(default={"type":"Point","coordinates":[-1.4058208465576172,47.15301133231325]})
+	user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="hoodadmin",null=True,blank=True)
+	location=models.CharField(max_length=100, null=True, blank=True)
+
 
 	def __str__(self):
 		return self.name
@@ -33,7 +35,7 @@ class UserProfile(models.Model):
 	secondary_email = models.CharField(max_length=100, null=True, blank=True)
 
 	def __str__(self):
-		return self.user
+		return self.user.username
 	class Meta:
 		ordering = ['user']
 	def save_user(self):
@@ -73,5 +75,17 @@ class Business(models.Model):
 
 	@classmethod
 	def search_by_title(cls,search_term):
-		business = cls.objects.filter(title__icontains=search_term)
+		business = cls.objects.filter(name__icontains=search_term)
 		return business		
+
+class Post(models.Model):
+	post=models.CharField(max_length=100, null=True, blank=True)
+	user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="adminpost",null=True,blank=True)
+	neighbor_hood=models.ForeignKey(Neighbor_hood, on_delete=models.CASCADE,related_name="hoodpost",null=True,blank=True)
+
+class Comments(models.Model):
+	user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE,related_name='user')
+	comments = models.TextField()
+	date_posted = models.DateTimeField(auto_now=True)
+	post=models.ForeignKey(Post, on_delete=models.CASCADE,related_name="comments")
+
