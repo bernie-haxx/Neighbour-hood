@@ -16,10 +16,14 @@ Including another URLconf
 
 from django.conf.urls import url,include
 from django.contrib import admin
+from django.contrib.auth.views import logout
+
 from neigbor_hood import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('neigbor_hood.urls')),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^accounts/profile/$', views.home,name='home'),
+url(r'^logout/$',logout,{"next_page":'/'}),
+
 ]
