@@ -167,7 +167,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 ACCOUNT_ACTIVATION_DAYS = 7
-SITE_ID = 3
+SITE_ID = 4
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER =config('EMAIL_HOST_USER')
