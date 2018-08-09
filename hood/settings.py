@@ -24,12 +24,10 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&sc=240o8=!+184=+(!7g=1r6-1a-^y*!6--u^6i(fam(vxc&h'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
