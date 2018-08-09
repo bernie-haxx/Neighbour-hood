@@ -1,0 +1,48 @@
+{% load bootstrap4 %} {% load static %} 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Business</title>
+  {{form.media}}
+   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto+Condensed" rel="stylesheet">
+
+{% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static "css/style.css" %}"> {% endblock %}
+
+</head>
+
+
+	<div class="row">
+		<div class='col-md-4 col-xs-4 col-sm-4'></div>
+ <div class='col-md-4 col-xs-4 col-sm-4'>
+ 	<h2 class="forms aligner"><strong>Adding A Post in {{user.profile.neighbor_hood.name}}</strong></h2>
+ <form  action="{% url "new_post" %}" method="post">
+            	{%csrf_token%}
+            	{% for field in form %}
+            	<div class='fieldWrapper forms'>
+            		<h5 class="forms aligner">{{field.label}}</h5>
+
+            		<p style='width:100%;text-align:center;'>{{field}}</p>
+            		</div>
+       			 {% for error in field.errors %}
+         		 <p style="color: red">{{ error }}</p>
+        			{% endfor %}
+            	{% endfor %}
+            	
+              <input type="submit" class="btn btn-primary btn-sm form-rounded widther forms" value="Adding Post" >
+              
+            </form>
+        </div>
+        <div class='col-md-4 col-xs-4 col-sm-4'></div>
+        </div>
+   {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+
+
+
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load bootstrap4 %}
+{%load static%}
+<link rel='stylesheet' href="{% static "css/style.css"%}">
+<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto+Condensed" rel="stylesheet">
+<div class="container">
+<div class='row' style="line-height:200px;margin-top:150px;">
+<h1 class="forms aligner"  style="margin-left:50px;margin-bottom:50px;">These are among you're registered neighbours</h1>
+{%for hood in neigbor%}
+<div class='col-md-4 col-xs-4 col-sm-4 forms aligner thumbnail tittles' >
+<h1><strong>Name:{{hood.user}}</strong></h1>
+	<h2><strong>ID:{{hood.user.profile.ID}}</strong></h2>
+
+</div>
+{%endfor%}
+
+</div>
+<div class="container-fluid">
+		<div class="forms aligner"  style="margin-left:50px;margin-top:50px;"> 
+			<h1><u><strong>Latest News In You're Hood!</strong></u></h1>
+			<div class="row">
+			<div class="col-md-4 col-xs-4 col-sm-4"></div>
+			<div class="col-md-4 col-xs-4 col-sm-4">
+			{%for hood in posts%}
+			
+			<div class='card post-cards register-card'>
+			<h2 class="left">Name:{{hood.user.username}}</h2>
+			<h2 class="right">{{hood.post}}</h2>
+			<h2><u>Comments</u></h2>
+				
+			<form  action="{%url 'hood' post_id=hood.id%}" method="post">
+	 {% csrf_token %}
+
+    {% bootstrap_form form layout='inline' %}
+
+    <input type="submit" value="Comment">
+  </form>
+
+		</div>
+			{%endfor%}
+	</div>
+
+			<div class="col-md-4 col-xs-4 col-sm-4"></div>
+		</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

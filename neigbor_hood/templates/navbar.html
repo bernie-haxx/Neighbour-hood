@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+
+<div class='container'>
+
+<nav class="navbar navbar-expand-lg navbar-light trans fixed-top float-lg-left" >
+
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTexts" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<div><a class='navbar-brand home-button text-align' href='#' ><i class="fas fa-home"></i></a></div>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+<div class="collapse navbar-collapse float-right" id="navbarTexts">
+	<ul class='navbar-nav mr-auto'>
+ 	<li><a href='#' class="navbar-item padder title font-navbar">Hood.inc</a></li>
+ 		<li><a href='' class=" navbar-item title font-navbar right padder">{{user.username}}</a></li>	
+</ul>
+    </div>
+
+<div class="collapse navbar-collapse float-right" id="navbarText">
+	<ul class='navbar-nav ml-auto'>
+
+     <li><a href='{% url "new_profile" %}' class=" navbar-item title font-navbar right padder">Edit Profile</a></li>
+    <li><a href='/logout' class="navbar-link u-header title font-navbar right padder">Log out</a></li>
+</ul>
+    </div>
+   
+  
+  
+</nav>
+</div>
+</body> 
+
+
+</html>

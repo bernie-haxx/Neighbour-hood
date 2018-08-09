@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<form class="fform" action="{% url "search" %}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="name">
+    </form>
+    
+{%endblock%}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for neigh in neighbor_hood %}
+<div style='text-align:center;line-height:200px;'>
+	<a href='{% url "join_hood" hood_id=neigh.id %}'>
+{{neigh.name}}</a></div>
+{% endfor %}
+{% endblock %}
