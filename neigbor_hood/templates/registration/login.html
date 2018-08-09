@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 {% block content %}
 
-<body style="background:rgba(0,0,0,0.5);>
+<body style="background:rgba(0,0,0,0.5);">
 <div class="container-fluid">
   <div class="row going">
     <!-- Empty div -->
@@ -27,7 +27,7 @@
             	{% if user.is_authenticated%}
               <input type='hidden' name='next' value='/'>
               {%endif%}
-              
+
               <input type="submit" class="btn btn-primary btn-sm form-rounded forms aligner widther" value='Login'>
 
             </form>
@@ -36,8 +36,8 @@
 				If you dont have an account: </h5>
 			<a href='/accounts/register' class="forms aligner"'>Sign Up</a>
 		</div>
-           
-             
+
+
 		</div>
 		</div>
 		<div class="col-md-4"></div>
