@@ -85,7 +85,7 @@ As a user I would like:
 
 ## Support and Contact Details
 
-> You can reach out to me at devsarahmarion@gmail.com
+> You can reach out to me at benkaranja43@gmail.com
 for Reviews, Advice, Collaborations and Comments
 
 ## Licence
