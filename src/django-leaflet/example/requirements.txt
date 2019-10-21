@@ -1,4 +1,4 @@
-Django==1.11.3
+Django==1.11.23
 django-geojson==2.10.0
 django-leaflet==0.22.0
 jsonfield==2.0.2
