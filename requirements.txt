@@ -16,7 +16,7 @@ django-geojson==2.11.0
 django-geoposition==0.3.0
 django-heroku==0.3.1
 django-leaflet==0.24.0
-django-registration==2.4.1
+django-registration==3.1.2
 django-tinymce==2.7.0
 django-toolbelt==0.0.1
 factory-boy==2.11.1
