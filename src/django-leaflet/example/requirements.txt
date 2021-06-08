@@ -2,5 +2,5 @@ Django==1.11.3
 django-geojson==2.10.0
 django-leaflet==0.22.0
 jsonfield==2.0.2
-Pillow==4.2.1
+Pillow==8.2.0
 six==1.10.0
